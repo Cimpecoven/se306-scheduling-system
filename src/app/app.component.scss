@@ -11,6 +11,7 @@
 
     .bac-title {
         margin-right: 40px;
+        font-size: large;
     }
 
     .user-selection {
@@ -23,6 +24,14 @@
     width: auto;
     background-color: #4a86e8ff;
     border-radius: 10px;
+    
+    .route-tab {
+        position: absolute;
+        padding: 10px;
+        text-align: center;
+        background-color: #cfe2f3ff;
+        border-radius: inherit;
+    }
 }
 
 .body {
