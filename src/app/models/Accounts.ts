@@ -7,8 +7,8 @@ class IAccount {
     email: string;
 }
 
-export class CustomerAccount extends IAccount {
-    databasekey: string;
+export class CustomerAccount {
+    databaseKey: string;
     name?: string;
     userID: string;
     password: string;
