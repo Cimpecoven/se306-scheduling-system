@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 // import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatInputModule, MatSidenavModule, MatToolbarModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatDialogModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { environment } from '../environments/environment';
@@ -12,7 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { AboutComponent } from './about/about.component';
-import { AccountComponent } from './account/account.component';
+import { CreateAccountDialogComponent } from './account/create-account-dialog.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     MainComponent,
     AboutComponent,
-    AccountComponent,
+    CreateAccountDialogComponent,
     EquipmentComponent
   ],
   imports: [
@@ -30,12 +32,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireModule.initializeApp(environment.FirebaseFirestore),
     // AngularFireDatabaseModule,
     AngularFirestoreModule,
+    AngularFireAuthModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
     MatInputModule, 
     MatButtonModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
   ],
