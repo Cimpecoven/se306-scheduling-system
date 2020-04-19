@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { CreateAccountDialogComponent } from '../account/create-account-dialog.component';
+import { CreateAccountComponent } from '../create-account/create-account.component';
 
 @Component({
   selector: 'app-main',
@@ -14,10 +14,7 @@ export class MainComponent implements OnInit {
   }
 
   openDialog() {
-    const createDialogRef = this.createDialog.open(CreateAccountDialogComponent, {
-      width: "400px",
-      height: "600px"
-    })
+    
   }
 
 }

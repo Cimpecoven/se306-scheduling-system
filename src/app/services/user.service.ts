@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 //import { AngularFireDatabase,  } from '@angular/fire/database';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { CustomerAccount, EmployeeAccount } from '../models/Accounts';
+import { map } from 'rxjs/operators'; 
 
 @Injectable({
   providedIn: 'root'
@@ -37,15 +38,52 @@ export class UserService {
   }
 
   updateCustomerAccount(account: CustomerAccount): Promise<void> {
-    return this.customersRef.doc(account.databaseKey).update(account);
+    return this.customersRef.doc(account.email).update(account);
   }
 
-  deleteCustomerAccount(customerKey: string) {
-    return this.customersRef.doc(customerKey).delete();
+  deleteCustomerAccount(account: CustomerAccount) {
+    return this.customersRef.doc(account.email).delete();
   }
 
-  getCustomerAccount(account: CustomerAccount) {
+  // getCustomerAccount(account: CustomerAccount) {
 
+  // }
+
+  getCustomerAccount(email: string, password: string) {
+    let customer: CustomerAccount;
+
+    // this.customersRef.doc<CustomerAccount>().get().subscribe(doc => {
+    //   if (doc.exists)
+    //     customer = doc.data() as CustomerAccount;
+      
+    //   else
+    //     throw "Account doesn't exist: failed retrieval."
+    // },  
+    // error => {
+    //   console.log('Error: ', error);
+    //   return;
+    // });
+
+    this.customersRef.get().subscribe(
+      querySnapshot => {
+        querySnapshot.docs.forEach((doc) => {
+          let compare = doc.data();
+          if (compare.email == email || compare.password == password) {
+            customer = compare as CustomerAccount;
+            return;
+          }  
+        }); 
+      },
+      error => {
+        console.log('Error: ', error);
+        return;
+      });
+
+    return customer;
+  }
+
+  getAllCustomerAccounts() {
+    return this.customersRef.snapshotChanges();
   }
 
   createEmployeeAccount(account: EmployeeAccount) {
@@ -62,18 +100,56 @@ export class UserService {
         return;
       });
 
-      this.employeesRef.add({...account});
+      this.employeesRef.doc(account.email).set({...account});
   }
 
   updateEmployeeAccount(account: EmployeeAccount) {
-    return this.employeesRef.doc(account.databaseKey).update(account);
+    return this.employeesRef.doc(account.email).update(account);
   }
 
-  deleteEmployeeAccount(employeeKey: string) {
-    return this.customersRef.doc(employeeKey).delete();
+  deleteEmployeeAccount(account: EmployeeAccount) {
+    return this.customersRef.doc(account.email).delete();
   }
 
-  getEmployeeAccount(account: EmployeeAccount) {
+  // getEmployeeAccount(account: EmployeeAccount) {
     
+  // }
+
+  getEmployeeAccount(email: string, password: string) {
+    let employee: EmployeeAccount;
+
+    // this.employeesRef.doc<EmployeeAccount>(email + '_' + password).get().subscribe(doc => {
+    //   if (doc.exists)
+    //     employee = doc.data() as EmployeeAccount;
+      
+    //   else
+    //     throw "Account doesn't exist: failed retrieval."
+    // },  
+    // error => {
+    //   console.log('Error: ', error);
+    //   return;
+    // });
+
+    this.customersRef.get().subscribe(
+      querySnapshot => {
+        querySnapshot.docs.forEach((doc) => {
+          let compare = doc.data();
+          if (compare.email == email || compare.password == password) {
+            employee = compare as EmployeeAccount;
+            return;
+          }  
+        }); 
+      },
+      error => {
+        console.log('Error: ', error);
+        return;
+      });
+
+
+    return employee;
+  }
+
+  getAllEmployeeAccounts() {
+    return this.employeesRef.snapshotChanges();
   }
 }
