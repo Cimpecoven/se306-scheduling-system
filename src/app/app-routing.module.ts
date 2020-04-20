@@ -11,7 +11,8 @@ const routes: Routes = [
   {path: 'main', component: MainComponent},
   {path: 'about', component: AboutComponent},
   {path: 'account', component: CreateAccountComponent},
-  {path: 'login', component: LoginComponent}];
+  //{path: 'login', component: LoginComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

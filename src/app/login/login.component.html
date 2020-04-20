@@ -1,6 +1,6 @@
 <div class="content">
-    <span class="page-title"><p>Login to {{ this.accountType }} Account</p></span> 
-    <form [formGroup]="form">
+    <span mat-dialog-title class="page-title"><p>Login to {{ this.accountType }} Account</p></span> 
+    <mat-dialog-content [formGroup]="form">
         <mat-form-field>
             <mat-label>Email Address</mat-label>
             <input matInput formControlName="email" placeholder="validemail@example.com"/>
@@ -32,12 +32,14 @@
                 Please confirm your password.
             </mat-error>
         </mat-form-field><br />
-     </form>
+     </mat-dialog-content>
      <div *ngIf="passwordWarning" class="warning">
          The confirmation password did not match the new password.
      </div>
-     <button mat-button (click)="tryLogin(form.value)">Submit</button>
-     <mat-checkbox (click)="changeAccountType()"></mat-checkbox>
+     <mat-dialog-actions>
+        <button mat-button (click)="tryLogin(form.value)">Submit</button>
+        <mat-checkbox (click)="changeAccountType()"></mat-checkbox>
+    </mat-dialog-actions>
  </div>
  <!-- [formControl]="emailFormControl"  [formControl]="passwordFormControl"-->
  

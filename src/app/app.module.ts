@@ -47,6 +47,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginComponent]
 })
 export class AppModule { }

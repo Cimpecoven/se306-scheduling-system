@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { faCog, faBars } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +14,16 @@ export class AppComponent {
   faBars = faBars;
   isOpen = false;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
   }
 
-  openNav() {
-    this.isOpen = true;
+  openDialog() {
+
+    // const dialogConfig = new MatDialogConfig();
+
+    // dialogConfig.autoFocus = true;
+
+    this.dialog.open(LoginComponent);
   }
+
 }

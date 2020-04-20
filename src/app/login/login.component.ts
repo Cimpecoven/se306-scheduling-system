@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerAccount } from '../models/Accounts';
 import { Validators, FormControl, FormBuilder, AbstractControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ValidatePassword } from '../create-account/create-account.component';
 import { UserService } from '../services/user.service';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
   public errorMessage = "";
   public successMessage = "";
 
-  constructor(private fb: FormBuilder, private service: UserService, private router: Router) { }
+  constructor(private fb: FormBuilder, private service: UserService,  private dialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit() {
     this.passwordWarning = false;
@@ -49,10 +48,12 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    //const l = this.isEmployeeAccount;
     if (this.isEmployeeAccount)
-      this.service.getEmployeeAccount(value.email, value.password);
+      this.errorMessage = this.service.getEmployeeAccount(value.email, value.password);
     else
-      this.service.getCustomerAccount(value.email, value.password);
+      this.errorMessage = this.service.getCustomerAccount(value.email, value.password);
+
+    if (!this.errorMessage)
+      this.dialogRef.close();
   }
 }
