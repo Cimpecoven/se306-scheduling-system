@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 //import { AngularFireDatabase,  } from '@angular/fire/database';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { CustomerAccount, EmployeeAccount } from '../models/Accounts';
+import { CustomerAccount, EmployeeAccount, IAccount } from '../models/Accounts';
 import { map } from 'rxjs/operators'; 
 
 @Injectable({
@@ -12,6 +12,8 @@ export class UserService {
   private customerPath = '/customers';
   private employeePath = '/employees';
  
+  public currentUser: IAccount;
+
   customersRef: AngularFirestoreCollection<CustomerAccount> = null;
   employeesRef: AngularFirestoreCollection<EmployeeAccount> = null;
   
@@ -34,7 +36,21 @@ export class UserService {
         return;
       });
 
-      this.customersRef.add({...account});
+    //  this.customersRef.add({...account}).then(value => {
+    //     account.databaseKey = value.id;
+    //     this.customersRef.doc(value.id).update({...account});
+    //   });
+
+    this.customersRef.add({
+      email: account.email,
+      password: account.password,
+      name: "",
+      userID: account.userID,
+      databaseKey: "",
+    }).then(value => {
+      account.databaseKey = value.id;
+      this.customersRef.doc(value.id).update({...account});
+    });
   }
 
   updateCustomerAccount(account: CustomerAccount): Promise<void> {
@@ -50,7 +66,6 @@ export class UserService {
   // }
 
   getCustomerAccount(email: string, password: string) {
-    let customer: CustomerAccount;
 
     // this.customersRef.doc<CustomerAccount>().get().subscribe(doc => {
     //   if (doc.exists)
@@ -69,7 +84,7 @@ export class UserService {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
           if (compare.email == email || compare.password == password) {
-            customer = compare as CustomerAccount;
+            this.currentUser = compare as CustomerAccount;
             return;
           }  
         }); 
@@ -78,8 +93,6 @@ export class UserService {
         console.log('Error: ', error);
         return;
       });
-
-    return customer;
   }
 
   getAllCustomerAccounts() {
@@ -116,7 +129,6 @@ export class UserService {
   // }
 
   getEmployeeAccount(email: string, password: string) {
-    let employee: EmployeeAccount;
 
     // this.employeesRef.doc<EmployeeAccount>(email + '_' + password).get().subscribe(doc => {
     //   if (doc.exists)
@@ -135,7 +147,7 @@ export class UserService {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
           if (compare.email == email || compare.password == password) {
-            employee = compare as EmployeeAccount;
+            this.currentUser = compare as EmployeeAccount;
             return;
           }  
         }); 
@@ -144,9 +156,6 @@ export class UserService {
         console.log('Error: ', error);
         return;
       });
-
-
-    return employee;
   }
 
   getAllEmployeeAccounts() {

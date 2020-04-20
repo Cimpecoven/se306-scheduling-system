@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerAccount } from '../models/Accounts';
 import { Validators, FormControl, FormBuilder, AbstractControl, FormGroup } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-account',
@@ -19,7 +19,7 @@ export class CreateAccountComponent implements OnInit {
   public errorMessage = "";
   public successMessage = "";
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private service: UserService, private router: Router) { }
 
   ngOnInit() {
     this.passwordWarning = false;
@@ -41,17 +41,7 @@ export class CreateAccountComponent implements OnInit {
       return;
     }
 
-    this.authService.doRegisterCustomer(value)
-    .then(res => {
-      console.log(res);
-      this.errorMessage = "";
-      this.successMessage = "Your account has been created";
-      this.router.navigate(['/main']);
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-      this.successMessage = "";
-    })
+    this.service.createCustomerAccount(new CustomerAccount(value.email, value.password));
   }
 }
 
