@@ -61,24 +61,7 @@ export class UserService {
     return this.customersRef.doc(account.email).delete();
   }
 
-  // getCustomerAccount(account: CustomerAccount) {
-
-  // }
-
   getCustomerAccount(email: string, password: string) {
-
-    // this.customersRef.doc<CustomerAccount>().get().subscribe(doc => {
-    //   if (doc.exists)
-    //     customer = doc.data() as CustomerAccount;
-      
-    //   else
-    //     throw "Account doesn't exist: failed retrieval."
-    // },  
-    // error => {
-    //   console.log('Error: ', error);
-    //   return;
-    // });
-
     this.customersRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
@@ -124,24 +107,7 @@ export class UserService {
     return this.customersRef.doc(account.email).delete();
   }
 
-  // getEmployeeAccount(account: EmployeeAccount) {
-    
-  // }
-
   getEmployeeAccount(email: string, password: string) {
-
-    // this.employeesRef.doc<EmployeeAccount>(email + '_' + password).get().subscribe(doc => {
-    //   if (doc.exists)
-    //     employee = doc.data() as EmployeeAccount;
-      
-    //   else
-    //     throw "Account doesn't exist: failed retrieval."
-    // },  
-    // error => {
-    //   console.log('Error: ', error);
-    //   return;
-    // });
-
     this.customersRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
