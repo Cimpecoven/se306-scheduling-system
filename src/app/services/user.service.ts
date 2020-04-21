@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { CustomerAccount, EmployeeAccount, IAccount } from '../models/Accounts';
 import { map } from 'rxjs/operators'; 
+import { EmployeeRoles } from '../models/EmployeeRoles';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class UserService {
   private customerPath = '/customers';
   private employeePath = '/employees';
  
-  public currentUser: IAccount;
+  public currentUser: Subject<IAccount>;
 
   customersRef: AngularFirestoreCollection<CustomerAccount> = null;
   employeesRef: AngularFirestoreCollection<EmployeeAccount> = null;
@@ -20,6 +22,7 @@ export class UserService {
   constructor(private db: AngularFirestore) {
     this.customersRef = db.collection(this.customerPath);
     this.employeesRef = db.collection(this.employeePath);
+    this.currentUser = new Subject<IAccount>();
   }
 
   createCustomerAccount(account: CustomerAccount): void {
@@ -54,11 +57,11 @@ export class UserService {
   }
 
   updateCustomerAccount(account: CustomerAccount): Promise<void> {
-    return this.customersRef.doc(account.email).update(account);
+    return this.customersRef.doc(account.databaseKey).update(account);
   }
 
   deleteCustomerAccount(account: CustomerAccount) {
-    return this.customersRef.doc(account.email).delete();
+    return this.customersRef.doc(account.databaseKey).delete();
   }
 
   getCustomerAccount(email: string, password: string) {
@@ -67,15 +70,17 @@ export class UserService {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
           if (compare.email == email || compare.password == password) {
-            this.currentUser = compare as CustomerAccount;
-            return;
+            this.currentUser.next(compare as CustomerAccount);
+            return "";
           }  
         }); 
       },
       error => {
         console.log('Error: ', error);
-        return;
+        return 'Error: ' + error;
       });
+
+      return '';
   }
 
   getAllCustomerAccounts() {
@@ -96,7 +101,21 @@ export class UserService {
         return;
       });
 
-      this.employeesRef.doc(account.email).set({...account});
+      if (account.status)
+        account.status = EmployeeRoles.UnassignedEmployee;
+
+      //this.employeesRef.doc(account.email).set({...account});
+      this.employeesRef.add({
+        email: account.email,
+        password: account.password,
+        name: "",
+        userID: account.userID,
+        databaseKey: "",
+        status: account.status,
+      }).then(value => {
+        account.databaseKey = value.id;
+        this.customersRef.doc(value.id).update({...account});
+      });
   }
 
   updateEmployeeAccount(account: EmployeeAccount) {
@@ -107,24 +126,31 @@ export class UserService {
     return this.customersRef.doc(account.email).delete();
   }
 
-  getEmployeeAccount(email: string, password: string) {
+  getEmployeeAccount(email: string, password: string): string {
     this.customersRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
           if (compare.email == email || compare.password == password) {
-            this.currentUser = compare as EmployeeAccount;
-            return;
+            this.currentUser.next(compare as EmployeeAccount);
+            return "";
           }  
         }); 
       },
       error => {
         console.log('Error: ', error);
-        return;
+        return 'Error: ' + error;
       });
+
+      return '';
   }
 
   getAllEmployeeAccounts() {
     return this.employeesRef.snapshotChanges();
   }
+
+  logOut() {
+    this.currentUser.next(null);
+  }
+
 }

@@ -2,10 +2,15 @@
     <img class="system-logo" src="assets/img/BAC Scheduling System Logo.png">
     <span class="bac-title" routerLink="/main"><strong>Brookings Activity Center</strong></span>
     <span class="user-selection" (click)="openDialog()">
-        <a style = "text-decoration: none">
+        <a *ngIf="!loggedIn" style = "text-decoration: none">
             <img class = "sign-in" src = "assets/img/signInIcon.png">
             <div>Sign In </div>
         </a> 
+        <a *ngIf="loggedIn && currentUser" style = "text-decoration: none">
+            <!-- <img class = "sign-in" src = "assets/img/signInIcon.png"> -->
+            <fa-icon class = "sign-in" [icon]="faCircle"></fa-icon>
+            <div> {{ currentUser.name ? currentUser.name : currentUser.email }} </div>
+        </a>
     </span>
     
 </div>
