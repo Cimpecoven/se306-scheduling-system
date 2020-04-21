@@ -2,7 +2,7 @@
     height: 100px;
     width: auto;
     text-align: center;
-    // margin-right: 40px;
+    margin-right: 40px;
 
     .system-logo {
         height: 100px;
@@ -26,29 +26,18 @@
 }
 
 .route-bar {
-    list-style-type: none;
-    margin: 3px;
-    padding: 0;
-    overflow: hidden;
     height: 50px;
     width: auto;
     background-color: #4a86e8ff;
     border-radius: 10px;
     
-    li {
-        float: left;
-        vertical-align: middle;
-        // display: inline;
+    .route-tab {
+        position: absolute;
         padding: 10px;
-        margin: 5px;
         text-align: center;
         background-color: #cfe2f3ff;
         border-radius: inherit;
-    } 
-    
-    .route-tab-about {
-        float: right;
-    }  
+    }
 }
 
 .body {
