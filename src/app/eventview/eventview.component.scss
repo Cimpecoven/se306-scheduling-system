@@ -1,0 +1,20 @@
+.body{
+    background: lightblue;
+    margin: 0 auto;
+    vertical-align: top;
+    width: 100%;
+    border-radius: 10% / 25%;
+}
+
+.body::after{
+    content: "";
+    display: block;
+    margin: 0 auto;
+    padding-top: 5%;
+}
+
+.body-text{
+    vertical-align: top;
+    margin: 0 auto;
+    text-align: center;
+}
