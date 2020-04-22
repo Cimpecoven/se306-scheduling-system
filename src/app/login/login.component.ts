@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   public isEmployeeAccount = false;
   public accountType = "Customer";
+  public accountInput = "Email";
   public passwordWarning = false;
   public errorMessage = "";
   public successMessage = "";
@@ -32,15 +33,19 @@ export class LoginComponent implements OnInit {
 
   changeAccountType() {
     this.isEmployeeAccount = !this.isEmployeeAccount;
-    if (this.isEmployeeAccount)
+    if (this.isEmployeeAccount) {
       this.accountType = "Employee";
-    else
+      this.accountInput = "Email";
+    }
+    else {
       this.accountType = "Customer";
+      this.accountInput = "User ID";
+  }
   }
   
   tryLogin(value) {
     if (value.password == "" || value.password != this.confirmFormControl.value) {
-      this.passwordWarning = true;
+      this.errorMessage = "The confirmation password did not match the entered password."
       return;
     }
 

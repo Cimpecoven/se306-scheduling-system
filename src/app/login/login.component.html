@@ -2,14 +2,14 @@
     <span mat-dialog-title class="page-title"><p>Login to {{ this.accountType }} Account</p></span> 
     <mat-dialog-content [formGroup]="form">
         <mat-form-field>
-            <mat-label>Email Address</mat-label>
+            <mat-label>{{ accountInput }}</mat-label>
             <input matInput formControlName="email" placeholder="validemail@example.com"/>
             <mat-error *ngIf = "form.get('email').errors 
             && !form.get('email').hasError('required')">
             Please enter a valid email address
             </mat-error>
             <mat-error *ngIf = "form.get('email').hasError('required')">
-                Email is a required field.
+                {{ accountInput }} is a required field.
             </mat-error>
         </mat-form-field><br />
         <mat-form-field>
@@ -33,8 +33,11 @@
             </mat-error>
         </mat-form-field><br />
      </mat-dialog-content>
-     <div *ngIf="passwordWarning" class="warning">
+     <!-- <div *ngIf="passwordWarning && !errorMessage" class="warning">
          The confirmation password did not match the new password.
+     </div> -->
+     <div *ngIf="errorMessage" class="warning">
+         {{ errorMessage }}
      </div>
      <mat-dialog-actions>
         <button mat-button (click)="tryLogin(form.value)">Submit</button>
