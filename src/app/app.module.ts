@@ -18,6 +18,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { EquipmentComponent } from './equipment/equipment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoginComponent } from './login/login.component';
     AboutComponent,
     CreateAccountComponent,
     EquipmentComponent,
-    LoginComponent
+    LoginComponent,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,
