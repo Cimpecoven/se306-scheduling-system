@@ -35,11 +35,11 @@ export class LoginComponent implements OnInit {
     this.isEmployeeAccount = !this.isEmployeeAccount;
     if (this.isEmployeeAccount) {
       this.accountType = "Employee";
-      this.accountInput = "Email";
+      this.accountInput = "User ID";
     }
     else {
       this.accountType = "Customer";
-      this.accountInput = "User ID";
+      this.accountInput = "Email";
   }
   }
   

@@ -65,6 +65,8 @@ export class UserService {
   }
 
   getCustomerAccount(email: string, password: string) {
+    let errorMessage = "";
+    
     this.customersRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
@@ -75,16 +77,16 @@ export class UserService {
           }
           else if (compare === null)
           {
-            throw "Not a valid customer account."
+            errorMessage = "Not a valid customer account."
           } 
+          else
+          {
+            errorMessage = "Incorrect User ID or password. Please Try Again";
+          }
         }); 
-      },
-      error => {
-        console.log('Error: ', error);
-        return 'Error: ' + error;
       });
 
-      return 'Incorrect User ID or password. Please Try Again';
+      return errorMessage;
   }
 
   getAllCustomerAccounts() {
