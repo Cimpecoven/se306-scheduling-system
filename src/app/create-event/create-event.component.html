@@ -1,2 +1,59 @@
-<p>create-event works!</p>
-<p> testing </p>
+<div class="content">
+    <span class="page-title"><p>Create New Event Request</p></span> 
+    <form [formGroup]="form">
+         <mat-form-field>
+            <mat-label>Enter Date</mat-label>
+            <input matInput formControlName="date" placeholder="MM/DD/YYYY"/>
+    
+         </mat-form-field><br />
+         <mat-form-field>
+            <mat-label>Start Time</mat-label>
+            <input matInput formControlName="startTime" placeholder="6:00pm"/>
+             
+         </mat-form-field><br />
+         <mat-form-field>
+            <mat-label>End Time</mat-label>
+            <input matInput formControlName="endTime" placeholder="11:00pm"/>
+             
+         </mat-form-field><br />
+         <mat-form-field>
+            <mat-label>Room</mat-label>
+            <select matNativeControl required>
+                <option value="none">Choose a Room</option>
+                <option value="ball">Ballroom</option>
+                <option value="ballA">Ballroom A</option>
+                <option value="ballB">Ballroom B</option>
+                <option value="conventionCenter">Convention Center</option>
+                <option value="theater">Theater</option>
+                <option value="perfCenter">Performance Center</option>
+            </select>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Catering Yes/No</mat-label>
+            <select matNativeControl required>
+                <option value="">Catering Yes/No</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Select Menu Item</mat-label>
+            <select matNativeControl>
+                <option value="none">Select Menu Item (Optional)</option>
+                <option value="Steak and Potatoes">Steak and Potatoes</option>
+                <option value="Chicken Alfredo Pasta">Chicken Alfredo Pasta</option>
+                <option value="Cheese Burger and Fries">Cheese Burger and Fries</option>
+            </select>
+   
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Enter Description</mat-label>
+            <input matInput formControlName="description" placeholder="This is a birthday party..."/>
+   
+        </mat-form-field><br />
+     </form>
+
+     <button mat-button (click)="tryRegister(form.value)">Submit</button>
+ </div>
+ <!-- [formControl]="emailFormControl"  [formControl]="passwordFormControl"-->
+ 
