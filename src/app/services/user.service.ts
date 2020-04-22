@@ -81,7 +81,7 @@ export class UserService {
           } 
           else
           {
-            errorMessage = "Incorrect User ID or password. Please Try Again";
+            errorMessage = "Incorrect Email or password. Please Try Again";
           }
         }); 
       });
@@ -133,6 +133,8 @@ export class UserService {
   }
 
   getEmployeeAccount(userID: string, password: string): string {
+    let errorMessage = "";
+
     this.employeesRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
@@ -143,16 +145,16 @@ export class UserService {
           } 
           else if (compare === null)
           {
-            throw "Not a valid employee account."
+            errorMessage = "Not a valid employee account."
+          } 
+          else
+          {
+            errorMessage = "Incorrect User ID or password. Please Try Again";
           }
         }); 
-      },
-      error => {
-        console.log('Error: ', error);
-        return 'Error: ' + error;
       });
 
-      return 'Incorrect User ID or password. Please Try Again';
+      return errorMessage;
   }
 
   getAllEmployeeAccounts() {
