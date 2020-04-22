@@ -6,7 +6,7 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatInputModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatDialogModule, MatCheckboxModule } from '@angular/material';
+import { MatInputModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatDialogModule, MatCheckboxModule, MatTableModule, MatPaginatorModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { environment } from '../environments/environment';
@@ -19,6 +19,7 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { FoodviewComponent } from './foodview/foodview.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
     CreateAccountComponent,
     EquipmentComponent,
     LoginComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    FoodviewComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
     MatButtonModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatTableModule,
+    MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
   ],

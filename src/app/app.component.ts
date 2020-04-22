@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { faCog, faBars, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user.service';
-import { IAccount } from './models/Accounts';
+import { IAccount, CustomerAccount } from './models/Accounts';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,9 @@ export class AppComponent {
   title = 'scheduling-system';
   faCog = faCog;
   faBars = faBars;
-  faCircle = faCircle;
+  faUserCircle = faUserCircle;
   loggedIn = false;
+  customerLoggedIn = false;
   currentUser: IAccount;
 
   constructor(private dialog: MatDialog, private service: UserService) {
@@ -30,6 +31,11 @@ export class AppComponent {
         this.loggedIn = true;
 
       this.currentUser = user;
+      
+      if (this.loggedIn && this.currentUser instanceof CustomerAccount)
+        this.customerLoggedIn = true;
+      else
+        this.customerLoggedIn = false;
     })
   }
 
