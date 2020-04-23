@@ -127,7 +127,7 @@ export class UserService {
   }
 
   getEmployeeAccount(email: string, password: string): string {
-    this.customersRef.get().subscribe(
+    this.employeesRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();

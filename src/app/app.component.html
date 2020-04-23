@@ -1,7 +1,7 @@
 <div class="header">
     <img class="system-logo" src="assets/img/BAC Scheduling System Logo.png">
     <span class="bac-title" routerLink="/main"><strong>Brookings Activity Center</strong></span>
-    <span class="user-selection" (click)="openDialog()">
+    <span class="user-selection" (click)="openDialog()" style = "cursor: pointer;">
         <a *ngIf="!loggedIn" style = "text-decoration: none">
             <img class = "sign-in" src = "assets/img/signInIcon.png">
             <div>Sign In </div>

@@ -14,19 +14,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { AboutComponent } from './about/about.component';
+import { EventviewComponent } from './eventview/eventview.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
+import { EventeditComponent } from './eventedit/eventedit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     AboutComponent,
+    EventviewComponent,
     CreateAccountComponent,
     EquipmentComponent,
-    LoginComponent
+    LoginComponent,
+    EventeditComponent
   ],
   imports: [
     BrowserModule,
