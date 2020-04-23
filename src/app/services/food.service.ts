@@ -54,7 +54,7 @@ export class FoodService {
       return errorMessage;
   }
 
-  getAllFoodItemms() {
+  getAllFoodItems() {
     return this.foodRef.snapshotChanges();
   }
 }

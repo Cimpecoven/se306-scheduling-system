@@ -31,6 +31,7 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { FoodviewComponent } from './foodview/foodview.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
     CreateAccountComponent,
     EquipmentComponent,
     LoginComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    FoodviewComponent
   ],
   imports: [
     BrowserModule,

@@ -10,12 +10,22 @@ import { EventService } from '../services/event.service';
 })
 export class CreateEventComponent implements OnInit {
 
-  constructor(service: EventService) { }
+  public form: FormGroup;
+
+  constructor(private fb: FormBuilder, service: EventService) { }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      date: new FormControl(''),
+      startTime: new FormControl(''),
+      endTime: new FormControl(''),
+      description: new FormControl(''),
+      room: new FormControl(''),
+      catering: new FormControl(''),
+      menu: new FormControl(''),
+    });
   }
 
   tryRegister(value) {
   }
-
 }
