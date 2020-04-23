@@ -65,22 +65,28 @@ export class UserService {
   }
 
   getCustomerAccount(email: string, password: string) {
+    let errorMessage = "";
+    
     this.customersRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
-          if (compare.email == email || compare.password == password) {
+          if (compare.email == email && compare.password == password) {
             this.currentUser.next(compare as CustomerAccount);
             return "";
-          }  
+          }
+          else if (compare === null)
+          {
+            errorMessage = "Not a valid customer account."
+          } 
+          else
+          {
+            errorMessage = "Incorrect Email or password. Please Try Again";
+          }
         }); 
-      },
-      error => {
-        console.log('Error: ', error);
-        return 'Error: ' + error;
       });
 
-      return '';
+      return errorMessage;
   }
 
   getAllCustomerAccounts() {
@@ -123,26 +129,32 @@ export class UserService {
   }
 
   deleteEmployeeAccount(account: EmployeeAccount) {
-    return this.customersRef.doc(account.email).delete();
+    return this.employeesRef.doc(account.email).delete();
   }
 
-  getEmployeeAccount(email: string, password: string): string {
+  getEmployeeAccount(userID: string, password: string): string {
+    let errorMessage = "";
+
     this.employeesRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
-          if (compare.email == email || compare.password == password) {
+          if (compare.userID == userID && compare.password == password) {
             this.currentUser.next(compare as EmployeeAccount);
             return "";
-          }  
+          } 
+          else if (compare === null)
+          {
+            errorMessage = "Not a valid employee account."
+          } 
+          else
+          {
+            errorMessage = "Incorrect User ID or password. Please Try Again";
+          }
         }); 
-      },
-      error => {
-        console.log('Error: ', error);
-        return 'Error: ' + error;
       });
 
-      return '';
+      return errorMessage;
   }
 
   getAllEmployeeAccounts() {

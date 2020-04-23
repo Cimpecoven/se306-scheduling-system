@@ -6,6 +6,7 @@ import { EventviewComponent } from './eventview/eventview.component';
 import { EventeditComponent } from './eventedit/eventedit.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { LoginComponent } from './login/login.component';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'eventview', component: EventviewComponent},
   {path: 'eventedit', component: EventeditComponent},
   {path: 'account', component: CreateAccountComponent},
-  {path: 'login', component: LoginComponent}
+  //{path: 'login', component: LoginComponent}
+  {path: 'createEvent', component: CreateEventComponent},
 ];
 
 @NgModule({
