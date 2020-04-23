@@ -24,6 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { AboutComponent } from './about/about.component';
+import { EventviewComponent } from './eventview/eventview.component';
+import { EventeditComponent } from './eventedit/eventedit.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,6 +37,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
     AppComponent,
     MainComponent,
     AboutComponent,
+    EventviewComponent,
+    EventeditComponent,
     CreateAccountComponent,
     EquipmentComponent,
     LoginComponent,
