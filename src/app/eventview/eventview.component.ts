@@ -17,8 +17,7 @@ export class EventviewComponent implements OnInit {
   constructor(private fb: FormBuilder, private service: EventsService, private dialog: MatDialog,) { }
 
   ngOnInit() {
-    this.service.getAllEvents();
-
+    this.service.getAllEvents().subscribe(res => (this.events = res));
   }
 
   populateForm(data, form){
@@ -30,12 +29,6 @@ export class EventviewComponent implements OnInit {
     data.menuItem = form.menuItem;
     data.description = form.description;
     console.log(data);
-  }
-
-  getEvents(){
-  this.service
-  .getAllEvents()
-  .subscribe(res => (this.events = res));
   }
 
   openEditor(){
