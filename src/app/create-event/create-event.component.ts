@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormBuilder, AbstractControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { EventService } from '../services/event.service';
 
 @Component({
   selector: 'app-create-event',
@@ -10,9 +10,12 @@ import { UserService } from '../services/user.service';
 })
 export class CreateEventComponent implements OnInit {
 
-  constructor() { }
+  constructor(service: EventService) { }
 
   ngOnInit() {
+  }
+
+  tryRegister(value) {
   }
 
 }

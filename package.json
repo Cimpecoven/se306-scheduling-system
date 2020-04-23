@@ -27,6 +27,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "firebase": "^7.9.3",
     "minimist": "^1.2.3",
+    "ngx-material-timepicker": "^5.5.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

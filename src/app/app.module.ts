@@ -6,7 +6,17 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatInputModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatDialogModule, MatCheckboxModule } from '@angular/material';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { MatInputModule,
+         MatSidenavModule, 
+         MatToolbarModule, 
+         MatButtonModule, 
+         MatDialogModule, 
+         MatCheckboxModule, 
+         MatTableModule, 
+         MatPaginatorModule, 
+         MatDatepickerModule, 
+         MatNativeDateModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { environment } from '../environments/environment';
@@ -45,6 +55,11 @@ import { CreateEventComponent } from './create-event/create-event.component';
     MatButtonModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule,
     FormsModule,
     ReactiveFormsModule,
   ],
