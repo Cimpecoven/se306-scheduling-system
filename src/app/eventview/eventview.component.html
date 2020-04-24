@@ -20,7 +20,7 @@
                     <td style="padding-right: 100px;">{{ order.payload.doc.data().catering }}</td>
                     <td style="padding-right: 100px;">{{ order.payload.doc.data().menuItem }}</td>
                     <td style="padding-right: 100px;">{{ order.payload.doc.data().description }}</td>
-                    <td style="padding-right: 0px;">{{ order.payload.doc.data().databaseKey }}</td>
+                    <!-- <td class= "dbKey">{{ order.payload.doc.data().databaseKey }}</td> -->
                     <td> <span *ngFor = "let e of order.payload.doc.data().event">
                         {{ e }}
                     </span>

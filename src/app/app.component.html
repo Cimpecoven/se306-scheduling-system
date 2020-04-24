@@ -22,6 +22,7 @@
 
 <ul class="route-bar">
     <!-- <li><fa-icon [icon]="faBars"></fa-icon></li> -->
+    <li class="route-tab"><a routerLink="/main">Home</a></li>
     <li class="route-tab-about"><a routerLink="/about">About BAC <fa-icon [icon]="faCog"></fa-icon></a></li>
     <li class="route-tab"><a routerLink="/account">Create an Account</a></li>
     <li class="route-tab" *ngIf="currentUser && customerLoggedIn"><a routerLink="/createEvent">Request Event</a></li>
