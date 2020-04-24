@@ -33,6 +33,13 @@
                                                                       currentUser.status == 8)">
         <a routerLink="/foodview">View Food Items</a>
     </li>
+    <li class="route-tab" *ngIf="currentUser && !customerLoggedIn && (currentUser.status == 2 ||
+                                                                      currentUser.status == 4 || 
+                                                                      currentUser.status == 6 || 
+                                                                      currentUser.status == 7 || 
+                                                                      currentUser.status == 8)">
+        <a routerLink="/eventview">View Events</a>
+    </li>
 
 </ul>
 
