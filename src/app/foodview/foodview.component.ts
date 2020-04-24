@@ -7,6 +7,7 @@ import { FoodeditComponent } from '../foodedit/foodedit.component';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { EmployeeRoles } from '../models/EmployeeRoles';
+import { CreateFoodItemComponent } from '../create-food-item/create-food-item.component';
 
 @Component({
   selector: 'app-foodview',
@@ -52,5 +53,9 @@ export class FoodviewComponent implements OnInit {
         this.currentUser.status == EmployeeRoles.Server) {
       this.dialog.open(FoodeditComponent, {data:{ item: this.item }});
     }
+  }
+
+  openDialog() {
+    this.dialog.open(CreateFoodItemComponent);
   }
 }
