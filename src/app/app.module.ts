@@ -33,6 +33,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
 import { FoodeditComponent } from './foodedit/foodedit.component';
+import { CreateFoodItemComponent } from './create-food-item/create-food-item.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { FoodeditComponent } from './foodedit/foodedit.component';
     LoginComponent,
     CreateEventComponent,
     FoodviewComponent,
-    FoodeditComponent
+    FoodeditComponent,
+    CreateFoodItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,6 @@ import { FoodeditComponent } from './foodedit/foodedit.component';
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent, FoodeditComponent]
+  entryComponents: [LoginComponent, FoodeditComponent, CreateFoodItemComponent]
 })
 export class AppModule { }
