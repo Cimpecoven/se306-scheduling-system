@@ -92,14 +92,14 @@ export class EventeditComponent implements OnInit {
     {
       event.menuItem = " ";
     }
-    event.description = data.description;
+    event.description = data.description ? data.description : " ";
     
   }
 
   tryEdit(value){
-    console.log('this is value in tryEdit', value);
+    // console.log('this is value in tryEdit', value);
     this.populateForm(value, this.data.Event);
-    console.log('Just before updateEvent', this.data.Event);
+    // console.log('Just before updateEvent', this.data.Event);
     //this.service.updateEventInfo(this.data.Event);
     this.service.updateEventInfo(new Event(this.data.Event.databaseKey,
                                            this.data.Event.date,
@@ -108,7 +108,7 @@ export class EventeditComponent implements OnInit {
                                            this.data.Event.room,
                                            this.data.Event.catering,
                                            this.data.Event.menuItem,
-                                           this.data.Event.description,));
+                                           this.data.Event.description));
   }
 
 }

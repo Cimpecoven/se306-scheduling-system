@@ -10,19 +10,19 @@ export class EventsService {
 
   private eventPath = 'Events';
 
-  private itemsCollection: AngularFirestoreCollection<IEvent>;
+  // private itemsCollection: AngularFirestoreCollection<IEvent>;
 
-  private items: Observable<IEvent[]>;
+  // private items: Observable<IEvent[]>;
 
-  public currentEvent: Subject<IEvent>;
+  // public currentEvent: Subject<IEvent>;
 
   eventRef: AngularFirestoreCollection<Event> = null;
 
   constructor(private db: AngularFirestore) {
     this.eventRef = db.collection(this.eventPath);
-    this.currentEvent = new Subject<IEvent>();
-    this.itemsCollection = db.collection<IEvent>('items');
-    this.items = this.itemsCollection.valueChanges();
+    // this.currentEvent = new Subject<IEvent>();
+    // this.itemsCollection = db.collection<IEvent>('items');
+    // this.items = this.itemsCollection.valueChanges();
   }
 
   createEvent(event: Event): void{
@@ -56,13 +56,14 @@ export class EventsService {
 
   updateEventInfo(event: Event): Promise<void>{
     console.log('in updateEventInfo');
-    return this.db.collection('Events').doc(event.databaseKey).set({date: event.date,
+    return this.eventRef.doc(event.databaseKey).update({date: event.date,
                                                                     startTime: event.startTime,
                                                                     endTime: event.endTime,
                                                                     room: event.room,
                                                                     catering: event.catering,
                                                                     menuItem: event.menuItem,
-                                                                    description: event.description}, {merge: true});
+                                                                    description: event.description,
+                                                                    databaseKey: event.databaseKey});
   }
 
   getEventInfo(key: string) {
@@ -87,6 +88,6 @@ export class EventsService {
 
   public getAllEvents(){
     //return this.eventRef.snapshotChanges();
-    return this.db.collection('Events').snapshotChanges();
+    return this.eventRef.snapshotChanges();
   }
 }

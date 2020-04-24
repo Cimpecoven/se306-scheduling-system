@@ -22,7 +22,7 @@ export class EventviewComponent implements OnInit {
   }
 
   populateForm(data, event){
-    event.databaseKey = data.databaseKey
+    event.databaseKey = data.databaseKey.trim();
     event.date = data.date;
     event.startTime = data.startTime;
     event.endTime = data.endTime;
