@@ -12,7 +12,7 @@
                     <td style="padding-right: 100px;">Menu Item:</td>
                     <td style="padding-right: 100px;">Description:</td>
                 </tr>
-                <tr class="event-list" (click)="openEditor()" *ngFor="let order of events" style="cursor: pointer; border: 2px, solid, black">
+                <tr class="event-list" (click)="openEditor(order.payload.doc.data())" *ngFor="let order of events" style="cursor: pointer; border: 2px, solid, black">
                     <td style="padding-right: 100px; padding-left: 10px;">{{ order.payload.doc.data().date }}</td>
                     <td style="padding-right: 100px;">{{ order.payload.doc.data().startTime }}</td>
                     <td style="padding-right: 100px;">{{ order.payload.doc.data().endTime }}</td>
@@ -20,6 +20,7 @@
                     <td style="padding-right: 100px;">{{ order.payload.doc.data().catering }}</td>
                     <td style="padding-right: 100px;">{{ order.payload.doc.data().menuItem }}</td>
                     <td style="padding-right: 100px;">{{ order.payload.doc.data().description }}</td>
+                    <td style="padding-right: 0px;">{{ order.payload.doc.data().databaseKey }}</td>
                     <td> <span *ngFor = "let e of order.payload.doc.data().event">
                         {{ e }}
                     </span>

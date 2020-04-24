@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Event, IEvent } from '../models/Events';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, merge } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
 
-  private eventPath = '/Events';
+  private eventPath = 'Events';
 
   private itemsCollection: AngularFirestoreCollection<IEvent>;
 
@@ -55,26 +55,34 @@ export class EventsService {
   }
 
   updateEventInfo(event: Event): Promise<void>{
-    return this.eventRef.doc(event.databaseKey).update(event);
+    console.log('in updateEventInfo');
+    return this.db.collection('Events').doc(event.databaseKey).set({date: event.date,
+                                                                    startTime: event.startTime,
+                                                                    endTime: event.endTime,
+                                                                    room: event.room,
+                                                                    catering: event.catering,
+                                                                    menuItem: event.menuItem,
+                                                                    description: event.description}, {merge: true});
   }
 
-  getEvent(date: string, startTime: string, room: string) {
+  getEventInfo(key: string) {
+    let errorMessage = "";
+    
     this.eventRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
-          if (compare.date == date && compare.startTime == startTime && compare.room == room) {
-            this.currentEvent.next(compare as Event);
-            return "";
-          }  
+          if (compare.databaseKey == key) {
+            return compare as Event;
+          }
+          else
+          {
+            errorMessage = "Something went wrong, try again.";
+          }
         }); 
-      },
-      error => {
-        console.log('Error: ', error);
-        return 'Error: ' + error;
       });
 
-      return '';
+      return errorMessage;
   }
 
   public getAllEvents(){

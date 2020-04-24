@@ -17,7 +17,8 @@ export class Event{
     menuItem?: string;
     description?: string;
 
-    constructor(date: string, startTime: string, endTime: string, room: string, catering: boolean, menuItem: string, description: string){
+    constructor(databaseKey: string, date: string, startTime: string, endTime: string, room: string, catering: boolean, menuItem: string, description: string){
+        this.databaseKey = databaseKey;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -46,6 +47,6 @@ export const EventConverter = {
     },
     fromFirestore(snapshot, options){
         const data = snapshot.data(options);
-        return new Event(data.date, data.startTime, data.endTime, data.room, data.catering, data.menuItem, data.description);
+        return new Event(data.dadabaseKey, data.date, data.startTime, data.endTime, data.room, data.catering, data.menuItem, data.description);
     }
 }

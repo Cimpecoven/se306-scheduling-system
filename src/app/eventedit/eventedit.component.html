@@ -1,57 +1,60 @@
 <div class="content">
-    <span mat-dialog-title class="page-title">
-        <p>Event Editor</p>
+    <span class="page-title">
+        <h3>Edit Event</h3>
     </span>
-    <mat-dialog-content [formGroup]="form">
-        <mat-form-field>
+    <form [formGroup]="form">
+        <mat-form-field class="form">
             <mat-label>Date</mat-label>
-            <input matInput formControlName="Date" value="default">
-            <!-- <mat-label>Date</mat-label>
-            <input matInput [matDatepicker] = "myDate" [formControl]="date">
-            <mat-datepicker-toggle matSuffix [for]="myDate"></mat-datepicker-toggle>
-            <mat-datepicker #myDate></mat-datepicker> -->
-        </mat-form-field> <br>
-        <mat-form-field>
+            <input matInput formControlName="date" [matDatepicker]="date" >
+            <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+            <mat-datepicker #date></mat-datepicker>
+            <mat-error *ngIf="form.get('date').hasError('required')">
+                Date is a required field.
+            </mat-error>
+        </mat-form-field><br>
+        <mat-form-field class="form">
             <mat-label>Start Time</mat-label>
-            <input matInput formControlName="Start Time" value="default">
-        </mat-form-field> <br>
-        <mat-form-field>
+            <input matInput formControlName="startTime" placeholder="6:00pm"/>
+            <!-- <ngx-material-timepicker #startTime></ngx-material-timepicker> -->
+        </mat-form-field><br />
+        <mat-form-field class="form">
             <mat-label>End Time</mat-label>
-            <input  matInput formControlName="End Time" value="default">
-        </mat-form-field> <br>
-        <mat-form-field>
+            <input matInput formControlName="endTime" placeholder="11:00pm" />
+            <!-- <ngx-material-timepicker #endTime></ngx-material-timepicker> -->
+        </mat-form-field><br />
+        <mat-form-field class="form">
             <mat-label>Room</mat-label>
-            <select matNativeControl required>
-                <option value="ballroom">Ball Room</option>
-                <option value="ballroomA">Ball Room A</option>
-                <option value="ballroomB">Ball Room B</option>
+            <select matNativeControl required formControlName="room"> 
+                <option value="none">Choose a Room</option>
+                <option value="ball">Ballroom</option>
+                <option value="ballA">Ballroom A</option>
+                <option value="ballB">Ballroom B</option>
                 <option value="conventionCenter">Convention Center</option>
                 <option value="theater">Theater</option>
                 <option value="perfCenter">Performance Center</option>
-              </select>
-        </mat-form-field> <br>
-        <mat-form-field>
+            </select>
+        </mat-form-field><br />
+        <mat-form-field class="form">
             <mat-label>Catering</mat-label>
-            <select matNativeControl required>
-                <option value="no">No</option>
+            <select matNativeControl required formControlName="catering">
                 <option value="yes">Yes</option>
+                <option value="no">No</option>
             </select>
-        </mat-form-field> <br>
-        <mat-form-field>
+        </mat-form-field><br />
+        <mat-form-field class="form">
             <mat-label>Menu Item</mat-label>
-            <select matNativeControl required>
-                <option value="noFood"> </option>
-                <option value="steak">Steak and Potatoes</option>
-                <option value="chicken">Chicken Alfredo Pasta</option>
-                <option value="burger">Cheeseburger and Fries</option>
+            <select matNativeControl formControlName="menuItem">
+                <option value="none">No Menu Item</option>
+                <option value="Steak and Potatoes">Steak and Potatoes</option>
+                <option value="Chicken Alfredo Pasta">Chicken Alfredo Pasta</option>
+                <option value="Cheeseburger and Fries">Cheeseburger and Fries</option>
             </select>
-        </mat-form-field> <br>
-        <mat-form-field>
+        </mat-form-field><br />
+        <mat-form-field class="form">
             <mat-label>Description</mat-label>
-            <input matInput formControlName="Description" value = default>
-        </mat-form-field> <br>
-    </mat-dialog-content>
-    <mat-dialog-actions>
-        <button mat-raised-button (click)="tryEdit(form.value)">Submit</button>
-    </mat-dialog-actions>
+            <input matInput formControlName="description" value= ""/>
+        </mat-form-field><br />
+    </form>
+
+    <button mat-button (click)="tryEdit(form.value)">Submit</button>
 </div>
