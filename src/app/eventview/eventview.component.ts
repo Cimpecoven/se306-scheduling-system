@@ -5,6 +5,10 @@ import { Validators, FormControl, FormBuilder, AbstractControl, FormGroup } from
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/Events';
 import { MatDialog } from '@angular/material';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+import { EmployeeAccount, IAccount } from '../models/Accounts';
+import { EmployeeRoles } from '../models/EmployeeRoles';
 
 @Component({
   selector: 'app-eventview',
@@ -14,11 +18,22 @@ import { MatDialog } from '@angular/material';
 export class EventviewComponent implements OnInit {
   public form: FormGroup;
   public events;
+  // public canEdit: boolean;
+  currentUser: any;
   event: Event = new Event("a","a","a","a","a",false,"a","a");
 
-  constructor(private fb: FormBuilder, private service: EventsService, private dialog: MatDialog,) { }
+  constructor(private router: Router, private userService: UserService, private service: EventsService, private dialog: MatDialog,) { }
+  
   ngOnInit() {
     this.service.getAllEvents().subscribe(res => (this.events = res));
+    this.userService.currentUser.subscribe(user => {        
+        this.currentUser = user;
+    });
+
+    if (!this.currentUser || !this.currentUser.status)
+    {
+      this.router.navigate(['/main']);
+    }
   }
 
   populateForm(data, event){
@@ -35,7 +50,9 @@ export class EventviewComponent implements OnInit {
 
   openEditor(value){
     this.populateForm(value, this.event);
-    this.dialog.open(EventeditComponent, {data:{ Event: this.event }});
+
+    if (this.currentUser.status == EmployeeRoles.BACManager)
+      this.dialog.open(EventeditComponent, {data:{ Event: this.event }});
   }
 
 }

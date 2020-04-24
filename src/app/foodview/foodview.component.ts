@@ -4,6 +4,9 @@ import { FoodItem } from '../models/FoodSupplies';
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { FoodeditComponent } from '../foodedit/foodedit.component';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+import { EmployeeRoles } from '../models/EmployeeRoles';
 
 @Component({
   selector: 'app-foodview',
@@ -12,26 +15,24 @@ import { FoodeditComponent } from '../foodedit/foodedit.component';
 })
 export class FoodviewComponent implements OnInit {
 
-  // displayedColumns: string[] = ['name', 'quantity', 'expirationDate', 'databaseKey'];
-  // public dataSource = new MatTableDataSource<FoodItem>();
-
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-
   public items;
   public item = new FoodItem();
+  public currentUser: any;
 
-  constructor(private service: FoodService, private dialog: MatDialog) { }
+  constructor(private service: FoodService, private userService: UserService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.service.getAllFoodItems().subscribe(data => {this.items = data});
     
-    // .pipe(
-    //   map(items => items.map(i => ({...i.payload.doc.data() })))
-    // ).subscribe(items => {
-    //   this.dataSource.data = items as FoodItem[];
-    //   // console.log(this.dataSource.data);
-    //   // this.dataSource.paginator = this.paginator;
-    // });
+    this.userService.currentUser.subscribe(user => {        
+      this.currentUser = user;
+  });
+
+  if (!this.currentUser || !this.currentUser.status)
+  {
+    this.router.navigate(['/main']);
+  }
+
   }
 
   populateForm(data, item){
@@ -43,6 +44,13 @@ export class FoodviewComponent implements OnInit {
 
   openEditor(value){
     this.populateForm(value, this.item);
-    this.dialog.open(FoodeditComponent, {data:{ item: this.item }});
+    
+    if (this.currentUser.status == EmployeeRoles.BACManager || 
+        this.currentUser.status == EmployeeRoles.KitchenManager || 
+        this.currentUser.status == EmployeeRoles.Cook ||
+        this.currentUser.status == EmployeeRoles.Host ||
+        this.currentUser.status == EmployeeRoles.Server) {
+      this.dialog.open(FoodeditComponent, {data:{ item: this.item }});
+    }
   }
 }

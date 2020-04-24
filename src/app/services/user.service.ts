@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { CustomerAccount, EmployeeAccount, IAccount } from '../models/Accounts';
 import { map } from 'rxjs/operators'; 
 import { EmployeeRoles } from '../models/EmployeeRoles';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class UserService {
   constructor(private db: AngularFirestore) {
     this.customersRef = db.collection(this.customerPath);
     this.employeesRef = db.collection(this.employeePath);
-    this.currentUser = new Subject<IAccount>();
+    this.currentUser = new BehaviorSubject<IAccount>(null);
   }
 
   createCustomerAccount(account: CustomerAccount): void {

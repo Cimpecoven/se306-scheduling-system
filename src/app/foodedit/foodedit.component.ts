@@ -20,9 +20,9 @@ export class FoodeditComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: new FormControl('', [Validators.required]),
-      quantity: new FormControl(0, [Validators.required]),
-      expirationDate: new FormControl('', [Validators.required]),
+      name: new FormControl(''),
+      quantity: new FormControl(0),
+      expirationDate: new FormControl(''),
     });
   }
 
