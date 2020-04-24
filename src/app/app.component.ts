@@ -32,11 +32,11 @@ export class AppComponent {
 
       this.currentUser = user;
       
-      if (this.loggedIn && this.currentUser instanceof CustomerAccount)
+      if (this.loggedIn && !('status' in this.currentUser))
         this.customerLoggedIn = true;
       else
         this.customerLoggedIn = false;
-    })
+    });
   }
 
   openDialog() {

@@ -55,7 +55,7 @@ export class EventsService {
   }
 
   updateEventInfo(event: Event): Promise<void>{
-    console.log('in updateEventInfo');
+    // console.log('in updateEventInfo');
     return this.eventRef.doc(event.databaseKey).update({date: event.date,
                                                                     startTime: event.startTime,
                                                                     endTime: event.endTime,
@@ -89,5 +89,9 @@ export class EventsService {
   public getAllEvents(){
     //return this.eventRef.snapshotChanges();
     return this.eventRef.snapshotChanges();
+  }
+
+  deleteEvent(event: Event) {
+    return this.eventRef.doc(event.databaseKey).delete();
   }
 }

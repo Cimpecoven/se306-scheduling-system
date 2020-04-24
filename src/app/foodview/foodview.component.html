@@ -1,31 +1,25 @@
-<div class="content">
-    <span class="page-title"><p>List of Food Supplies</p></span> 
-    <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="quantity">
-                <th mat-header-cell *matHeaderCellDef> Quantity </th>
-                <td mat-cell *matCellDef="let row"> {{row.quantity}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="expirationDate">
-                <th mat-header-cell *matHeaderCellDef> Expiration Date </th>
-                <td mat-cell *matCellDef="let row"> {{row.expirationDate}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="databaseKey">
-                <th mat-header-cell *matHeaderCellDef> Database Key </th>
-                <td mat-cell *matCellDef="let row"> {{row.databaseKey}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="itemSelected(row)"></tr>
-        </table>
-
-        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+<div class="body">
+    <div class="body-text">
+        <h2>List of Food Supplies</h2>
+        <div class="table">
+            <table>
+                <tr class="food-header">
+                    <td style="padding-right: 100px; padding-left: 10px;">Name:</td>
+                    <td style="padding-right: 100px;">Quantity:</td>
+                    <td style="padding-right: 100px;">Expiration Date:</td>
+                </tr>
+                <tr class="food-list" (click)="openEditor(item.payload.doc.data())" *ngFor="let item of items" style="cursor: pointer; border: 2px, solid, black">
+                    <td style="padding-right: 100px; padding-left: 10px;">{{ item.payload.doc.data().name }}</td>
+                    <td style="padding-right: 100px;">{{ item.payload.doc.data().quantity }}</td>
+                    <td style="padding-right: 100px;">{{ item.payload.doc.data().expirationDate }}</td>
+                    <td style="padding-right: 0px;">{{ item.payload.doc.data().databaseKey }}</td>
+                    <td> 
+                        <!-- <span *ngFor = "let e of item.payload.doc.data().event">
+                        {{ e }}
+                    </span> -->
+                </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

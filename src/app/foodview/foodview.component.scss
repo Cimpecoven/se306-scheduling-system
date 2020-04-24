@@ -1,17 +1,40 @@
-.content {
-    background-color: #cfe2f3ff;
-    border-color: #000000;
-    border-width: 5px;
-    border-radius: 10px;
-    text-align: center;
+.body{
+    background: lightblue;
+    margin: 0 auto;
+    vertical-align: top;
+    width: 100%;
+    border-radius: 10% / 25%;
 }
-.page-title {
+
+.body::after{
+    content: "";
+    display: block;
+    margin: 0 auto;
+    padding-top: 5%;
+}
+
+.body-text{
+    vertical-align: top;
+    margin: 0 auto;
     text-align: center;
 }
 
-table {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    min-width: 500px;
+.table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.food-header{
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.food-list{
+    text-align: center;
+    margin: 0 auto;
+    background: lightgray;
+    border-style: solid;
+    border-color: black;
 }

@@ -14,7 +14,7 @@ export class FoodService {
     this.foodRef = db.collection(this.foodPath);
   }
 
-  createEquipmentItem(item: FoodItem): void {
+  createFoodItem(item: FoodItem): void {
     this.foodRef.add({
       expirationDate: item.expirationDate,
       name: item.name,
@@ -27,7 +27,7 @@ export class FoodService {
   }
 
   updateFoodItem(item: FoodItem): Promise<void> {
-    return this.foodRef.doc(item.databaseKey).update(item);
+    return this.foodRef.doc(item.databaseKey).update({...item});
   }
 
   deleteFoodItem(item: FoodItem) {

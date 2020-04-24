@@ -1,5 +1,5 @@
 <div class="header">
-    <img class="system-logo" src="assets/img/BAC Scheduling System Logo.png">
+    <img class="system-logo" routerLink="/main" src="assets/img/BAC Scheduling System Logo.png">
     <span class="bac-title" routerLink="/main"><strong>Brookings Activity Center</strong></span>
     <span class="user-selection" (click)="openDialog()" style = "cursor: pointer;">
         <a *ngIf="!loggedIn" style = "text-decoration: none">
@@ -25,7 +25,13 @@
     <li class="route-tab-about"><a routerLink="/about">About BAC <fa-icon [icon]="faCog"></fa-icon></a></li>
     <li class="route-tab"><a routerLink="/account">Create an Account</a></li>
     <li class="route-tab" *ngIf="currentUser && customerLoggedIn"><a routerLink="/createEvent">Request Event</a></li>
-    <li class="route-tab"><a routerLink="/foodview">View Food Items</a></li>
+    <li class="route-tab" *ngIf="currentUser && !customerLoggedIn && (currentUser.status == 2 ||
+                                                                      currentUser.status == 4 || 
+                                                                      currentUser.status == 6 || 
+                                                                      currentUser.status == 7 || 
+                                                                      currentUser.status == 8)">
+        <a routerLink="/foodview">View Food Items</a>
+    </li>
 
 </ul>
 
