@@ -8,6 +8,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { LoginComponent } from './login/login.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
+import { UserPortalComponent } from './user-portal/user-portal.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   //{path: 'login', component: LoginComponent}
   {path: 'createEvent', component: CreateEventComponent},
   {path: 'foodview', component: FoodviewComponent},
+  {path: 'user-portal', component: UserPortalComponent}
 ];
 
 @NgModule({

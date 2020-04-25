@@ -3,7 +3,6 @@ import { FormGroup, Validators, FormControl, FormBuilder, FormsModule, ReactiveF
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DatePipe } from '@angular/common';
 import { FoodService } from '../services/food.service';
-import { FoodItem } from '../models/FoodSupplies';
 
 @Component({
   selector: 'app-create-food-item',

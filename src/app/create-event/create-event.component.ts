@@ -16,12 +16,12 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      date: new FormControl(''),
-      startTime: new FormControl(''),
-      endTime: new FormControl(''),
+      date: new FormControl('', [Validators.required]),
+      startTime: new FormControl('', [Validators.required]),
+      endTime: new FormControl('', [Validators.required]),
       description: new FormControl(''),
-      room: new FormControl(''),
-      catering: new FormControl(''),
+      room: new FormControl('', [Validators.required]),
+      catering: new FormControl('', [Validators.required]),
       menu: new FormControl(''),
     });
   }
