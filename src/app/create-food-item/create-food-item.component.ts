@@ -21,7 +21,7 @@ export class CreateFoodItemComponent implements OnInit {
     this.form = this.fb.group({
       name: new FormControl('', [Validators.required]),
       quantity: new FormControl(0, [Validators.required]),
-      expirationDate: new FormControl('', [Validators.required]),
+      expirationDate: new FormControl(''),
     });
   }
 

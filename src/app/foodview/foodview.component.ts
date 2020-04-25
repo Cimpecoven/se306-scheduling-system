@@ -8,6 +8,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { EmployeeRoles } from '../models/EmployeeRoles';
 import { CreateFoodItemComponent } from '../create-food-item/create-food-item.component';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-foodview',
@@ -19,6 +20,7 @@ export class FoodviewComponent implements OnInit {
   public items;
   public item = new FoodItem();
   public currentUser: any;
+  public faTrashAlt = faTrashAlt;
 
   constructor(private service: FoodService, private userService: UserService, private router: Router, private dialog: MatDialog) { }
 
