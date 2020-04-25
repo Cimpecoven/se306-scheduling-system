@@ -33,6 +33,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
 import { FoodeditComponent } from './foodedit/foodedit.component';
+import { RoomsComponent } from './rooms/rooms.component';
 import { CreateFoodItemComponent } from './create-food-item/create-food-item.component';
 import { UserPortalComponent } from './user-portal/user-portal.component';
 
@@ -51,6 +52,7 @@ import { UserPortalComponent } from './user-portal/user-portal.component';
     FoodeditComponent,
     CreateFoodItemComponent,
     UserPortalComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,
