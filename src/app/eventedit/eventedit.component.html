@@ -8,9 +8,9 @@
             <input matInput formControlName="date" [matDatepicker]="date" >
             <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
             <mat-datepicker #date></mat-datepicker>
-            <mat-error *ngIf="form.get('date').hasError('required')">
+            <!-- <mat-error *ngIf="form.get('date').hasError('required')">
                 Date is a required field.
-            </mat-error>
+            </mat-error> -->
         </mat-form-field><br>
         <mat-form-field class="form">
             <mat-label>Start Time</mat-label>
@@ -57,4 +57,5 @@
     </form>
 
     <button mat-button (click)="tryEdit(form.value)">Submit</button>
+    <button mat-button (click)="deleteEvent()">Cancel Event</button>
 </div>

@@ -91,7 +91,7 @@ export class EventsService {
     return this.eventRef.snapshotChanges();
   }
 
-  deleteEvent(event: Event) {
-    return this.eventRef.doc(event.databaseKey).delete();
+  deleteEvent(dbKey: string) {
+    return this.eventRef.doc(dbKey).delete();
   }
 }

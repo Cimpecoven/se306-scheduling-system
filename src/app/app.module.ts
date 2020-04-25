@@ -34,6 +34,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
 import { FoodeditComponent } from './foodedit/foodedit.component';
 import { RoomsComponent } from './rooms/rooms.component';
+import { CreateFoodItemComponent } from './create-food-item/create-food-item.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,6 @@ import { RoomsComponent } from './rooms/rooms.component';
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent, FoodeditComponent]
+  entryComponents: [LoginComponent, FoodeditComponent, CreateFoodItemComponent]
 })
 export class AppModule { }
