@@ -1,12 +1,12 @@
 <div class="header">
     <img class="system-logo" routerLink="/main" src="assets/img/BAC Scheduling System Logo.png">
     <span class="bac-title" routerLink="/main"><strong>Brookings Activity Center</strong></span>
-    <span class="user-selection" (click)="openDialog()" style = "cursor: pointer;">
-        <a *ngIf="!loggedIn" style = "text-decoration: none">
+    <span class="user-selection" style = "cursor: pointer;">
+        <a *ngIf="!loggedIn"  (click)="openDialog()" style = "text-decoration: none">
             <img class = "sign-in" src = "assets/img/signInIcon.png">
             <div>Sign In </div>
         </a> 
-        <a *ngIf="loggedIn && currentUser" style = "text-decoration: none">
+        <a *ngIf="loggedIn && currentUser" routerLink="/user-portal" style = "text-decoration: none">
             <!-- <img class = "sign-in" src = "assets/img/signInIcon.png"> -->
             <fa-icon style="font-size:48px;" [icon]="faUserCircle"></fa-icon>
             <div> {{ currentUser.name ? currentUser.name : currentUser.email }} </div>

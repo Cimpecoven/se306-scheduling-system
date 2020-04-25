@@ -1,35 +1,26 @@
 <div class="content">
-    <span class="page-title"><p>Create New Customer Account</p></span> 
+    <span class="page-title"><p>Edit Account Information</p></span> 
     <form [formGroup]="form">
          <mat-form-field>
              <mat-label>Email Address</mat-label>
              <input matInput formControlName="email" placeholder="validemail@example.com"/>
-             <mat-error *ngIf = "form.get('email').errors 
-             && !form.get('email').hasError('required')">
-             Please enter a valid email address
-             </mat-error>
-             <mat-error *ngIf = "form.get('email').hasError('required')">
-                 Email is a required field.
-             </mat-error>
          </mat-form-field><br />
+         <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name"/>
+        </mat-form-field><br />
          <mat-form-field>
              <mat-label>Password</mat-label>
              <input matInput formControlName="password" placeholder="Pa$$word1"/>
-             <mat-error *ngIf = "form.get('password').errors && !form.get('password').hasError('required')">
+             <mat-error *ngIf = "form.get('password').errors">
              Please enter a valid password: one capital letter, one symbol(@, #, etc.), and one digit (1, 2, etc.) <strong>must</strong> be included.
-             </mat-error>
-             <mat-error *ngIf = "form.get('password').hasError('required')">
-                 Password is a required field.
              </mat-error>
          </mat-form-field><br />
          <mat-form-field>
              <mat-label>Confirm Password</mat-label>
              <input matInput [formControl]="confirmFormControl" placeholder="Pa$$word1"/>
-             <mat-error *ngIf = "confirmFormControl.errors && !confirmFormControl.hasError('required')">
+             <mat-error *ngIf = "confirmFormControl.errors">
              Please enter a valid password: one capital letter, one symbol(!, #, etc.), and one digit (1, 2, etc.) <strong>must</strong> be included.
-             </mat-error>
-             <mat-error *ngIf = "confirmFormControl.hasError('required')">
-                 Please confirm your password.
              </mat-error>
          </mat-form-field><br />
      </form>
@@ -37,6 +28,7 @@
          The confirmation password did not match the new password.
      </div>
      <button mat-button (click)="tryEdit(form.value)">Submit</button>
+     <button mat-button (click)="logout()">Log Out</button>
  </div>
  <!-- [formControl]="emailFormControl"  [formControl]="passwordFormControl"-->
  
