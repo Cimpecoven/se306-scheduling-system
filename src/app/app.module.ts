@@ -36,6 +36,7 @@ import { FoodeditComponent } from './foodedit/foodedit.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { CreateFoodItemComponent } from './create-food-item/create-food-item.component';
 import { UserPortalComponent } from './user-portal/user-portal.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { UserPortalComponent } from './user-portal/user-portal.component';
     FoodeditComponent,
     CreateFoodItemComponent,
     UserPortalComponent,
-    RoomsComponent
+    RoomsComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
 import { UserPortalComponent } from './user-portal/user-portal.component';
 import { RoomsComponent } from './rooms/rooms.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'createEvent', component: CreateEventComponent},
   {path: 'foodview', component: FoodviewComponent},
   {path: 'user-portal', component: UserPortalComponent},
-  {path: 'rooms', component: RoomsComponent}
+  {path: 'rooms', component: RoomsComponent},
+  {path: 'menu', component: MenuComponent}
 ];
 
 @NgModule({
