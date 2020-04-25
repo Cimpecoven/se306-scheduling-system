@@ -34,6 +34,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
 import { FoodeditComponent } from './foodedit/foodedit.component';
 import { CreateFoodItemComponent } from './create-food-item/create-food-item.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CreateFoodItemComponent } from './create-food-item/create-food-item.com
     FoodviewComponent,
     FoodeditComponent,
     CreateFoodItemComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
