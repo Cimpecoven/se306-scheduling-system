@@ -33,6 +33,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
 import { FoodeditComponent } from './foodedit/foodedit.component';
+import { RoomsComponent } from './rooms/rooms.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { FoodeditComponent } from './foodedit/foodedit.component';
     LoginComponent,
     CreateEventComponent,
     FoodviewComponent,
-    FoodeditComponent
+    FoodeditComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,
