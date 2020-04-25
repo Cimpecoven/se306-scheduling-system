@@ -5,7 +5,7 @@
             <mat-label>{{ accountInput }}</mat-label>
             <input matInput formControlName="email" placeholder="validemail@example.com"/>
             <mat-error *ngIf = "form.get('email').errors 
-            && !form.get('email').hasError('required')">
+            && !form.get('email').hasError('required') && !isEmployeeAccount">
             Please enter a valid email address
             </mat-error>
             <mat-error *ngIf = "form.get('email').hasError('required')">

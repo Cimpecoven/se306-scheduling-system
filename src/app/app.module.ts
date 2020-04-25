@@ -33,8 +33,9 @@ import { LoginComponent } from './login/login.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
 import { FoodeditComponent } from './foodedit/foodedit.component';
+import { RoomsComponent } from './rooms/rooms.component';
 import { CreateFoodItemComponent } from './create-food-item/create-food-item.component';
-import { MenuComponent } from './menu/menu.component';
+import { UserPortalComponent } from './user-portal/user-portal.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MenuComponent } from './menu/menu.component';
     FoodviewComponent,
     FoodeditComponent,
     CreateFoodItemComponent,
-    MenuComponent,
+    UserPortalComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,

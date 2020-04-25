@@ -8,7 +8,8 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { LoginComponent } from './login/login.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
-import { MenuComponent } from './menu/menu.component';
+import { UserPortalComponent } from './user-portal/user-portal.component';
+import { RoomsComponent } from './rooms/rooms.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   //{path: 'login', component: LoginComponent}
   {path: 'createEvent', component: CreateEventComponent},
   {path: 'foodview', component: FoodviewComponent},
-  {path: 'menu', component: MenuComponent},
+  {path: 'user-portal', component: UserPortalComponent},
+  {path: 'rooms', component: RoomsComponent}
 ];
 
 @NgModule({
