@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { map } from 'rxjs/operators';
-import { FoodeditComponent } from '../foodedit/foodedit.component';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { EmployeeRoles } from '../models/EmployeeRoles';
@@ -9,6 +8,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Equipment } from '../models/Equipment';
 import { EquipmentService } from '../services/equipment.service';
 import { CreateEquipmentComponent } from '../create-equipment/create-equipment.component';
+import { EquipmenteditComponent } from '../equipmentedit/equipmentedit.component';
 
 @Component({
   selector: 'app-equipmentview',
@@ -53,7 +53,7 @@ export class EquipmentviewComponent implements OnInit {
         this.currentUser.status == EmployeeRoles.TechnicalManager || 
         this.currentUser.status == EmployeeRoles.Technician ||
         this.currentUser.status == EmployeeRoles.Host)
-              this.dialog.open(FoodeditComponent, {data:{ item: this.item }});
+              this.dialog.open(EquipmenteditComponent, {data:{ item: this.item }});
   }
 
   openDialog() {

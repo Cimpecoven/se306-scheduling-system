@@ -28,7 +28,6 @@ import { AboutComponent } from './about/about.component';
 import { EventviewComponent } from './eventview/eventview.component';
 import { EventeditComponent } from './eventedit/eventedit.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
-import { EquipmentComponent } from './equipment/equipment.component';
 import { LoginComponent } from './login/login.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { FoodviewComponent } from './foodview/foodview.component';
@@ -49,7 +48,6 @@ import { EquipmenteditComponent } from './equipmentedit/equipmentedit.component'
     EventviewComponent,
     EventeditComponent,
     CreateAccountComponent,
-    EquipmentComponent,
     LoginComponent,
     CreateEventComponent,
     FoodviewComponent,
