@@ -53,6 +53,7 @@ export class UserService {
     }).then(value => {
       account.databaseKey = value.id;
       this.customersRef.doc(value.id).update({...account});
+      this.getCustomerAccount(account.email, account.password);
     });
   }
 
