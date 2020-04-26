@@ -1,0 +1,52 @@
+.body{
+    background: lightblue;
+    margin: 0 auto;
+    vertical-align: top;
+    width: 100%;
+    border-radius: 10% / 25%;
+}
+
+.body::after{
+    content: "";
+    display: block;
+    margin: 0 auto;
+    padding-top: 5%;
+}
+
+.body-text{
+    vertical-align: top;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.food-header{
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.food-list{
+    text-align: center;
+    margin: 0 auto;
+    background: lightgray;
+    border-style: solid;
+    border-color: black;
+}
+
+.button {
+    margin: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: lightblue;
+    border: solid;
+    border-color: black;
+    border-radius: 8px;
+    font-size: large;
+    padding: 10px 20px;
+  }

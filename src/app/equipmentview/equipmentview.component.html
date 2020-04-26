@@ -1,0 +1,29 @@
+<div class="body">
+    <div class="body-text">
+        <h2>List of Equipment</h2>
+        <div class="table">
+            <table>
+                <tr class="food-header">
+                    <td style="padding-right: 100px; padding-left: 10px;">Name:</td>
+                    <td style="padding-right: 100px;">Quantity:</td>
+                    <td style="padding-right: 100px;">Location:</td>
+                    <td style="padding-right: 100px;">Condition:</td>
+                </tr>
+                <tr class="food-list" (click)="openEditor(item.payload.doc.data())" *ngFor="let item of items" style="cursor: pointer; border: 2px, solid, black">
+                    <td style="padding-right: 100px; padding-left: 10px;">{{ item.payload.doc.data().name }}</td>
+                    <td style="padding-right: 100px;">{{ item.payload.doc.data().quantity }}</td>
+                    <td style="padding-right: 100px;">{{ item.payload.doc.data().location }}</td>
+                    <td style="padding-right: 100px;">{{ item.payload.doc.data().condition }}</td>
+                    <td style="padding-right: 0px;">{{ item.payload.doc.data().databaseKey }}</td>
+                    <td (click)="deleteItem(item.payload.doc.data().databaseKey)"><fa-icon [icon]="faTrashAlt"></fa-icon></td>
+                        <!-- <span *ngFor = "let e of item.payload.doc.data().event">
+                        {{ e }}
+                    </span> -->
+
+                </tr>
+            </table>
+        </div>
+
+        <button class="button" (click)="openDialog()">Create Equipment Entry</button>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="content">
+    <span class="page-title">
+        <h3>Edit Food Item</h3>
+    </span>
+    <form [formGroup]="form">
+        <mat-form-field class="form">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field><br>
+        <mat-form-field class="form">
+            <mat-label>Quantity</mat-label>
+            <input matInput type="number" formControlName="quantity"/>
+            <!-- <ngx-material-timepicker #startTime></ngx-material-timepicker> -->
+        </mat-form-field><br />
+        <mat-form-field class="form">
+            <mat-label>Location</mat-label>
+            <input matInput formControlName="location" />
+        </mat-form-field><br />
+        <mat-form-field class="form">
+            <mat-label>Condition</mat-label>
+            <input matInput formControlName="condition" />
+        </mat-form-field><br />
+    </form>
+
+    <button mat-button (click)="tryEdit(form.value)">Submit</button>
+</div>

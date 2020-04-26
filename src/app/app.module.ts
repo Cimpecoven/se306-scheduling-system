@@ -37,6 +37,9 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { CreateFoodItemComponent } from './create-food-item/create-food-item.component';
 import { UserPortalComponent } from './user-portal/user-portal.component';
 import { MenuComponent } from './menu/menu.component';
+import { CreateEquipmentComponent } from './create-equipment/create-equipment.component';
+import { EquipmentviewComponent } from './equipmentview/equipmentview.component';
+import { EquipmenteditComponent } from './equipmentedit/equipmentedit.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { MenuComponent } from './menu/menu.component';
     UserPortalComponent,
     RoomsComponent,
     MenuComponent,
+    EquipmentviewComponent,
+    CreateEquipmentComponent,
+    EquipmenteditComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +87,6 @@ import { MenuComponent } from './menu/menu.component';
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent, FoodeditComponent, CreateFoodItemComponent]
+  entryComponents: [LoginComponent, FoodeditComponent, CreateFoodItemComponent, CreateEquipmentComponent, EquipmenteditComponent]
 })
 export class AppModule { }

@@ -11,6 +11,7 @@ import { FoodviewComponent } from './foodview/foodview.component';
 import { UserPortalComponent } from './user-portal/user-portal.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { MenuComponent } from './menu/menu.component';
+import { EquipmentviewComponent } from './equipmentview/equipmentview.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'foodview', component: FoodviewComponent},
   {path: 'user-portal', component: UserPortalComponent},
   {path: 'rooms', component: RoomsComponent},
-  {path: 'menu', component: MenuComponent}
+  {path: 'menu', component: MenuComponent},
+  {path: 'equipmentview', component: EquipmentviewComponent}
 ];
 
 @NgModule({
