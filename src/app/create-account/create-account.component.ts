@@ -42,6 +42,7 @@ export class CreateAccountComponent implements OnInit {
     }
 
     this.service.createCustomerAccount(new CustomerAccount(value.email, value.password));
+    this.router.navigate(['/main']);
   }
 }
 

@@ -12,7 +12,7 @@ export class CreateEventComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder, service: EventService) { }
+  constructor(private fb: FormBuilder, private service: EventService, private router: Router) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -27,5 +27,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   tryRegister(value) {
+    this.service.createEvent(value);
+    this.router.navigate(['/eventview']);
   }
 }
