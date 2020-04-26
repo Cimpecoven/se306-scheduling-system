@@ -30,7 +30,7 @@ export class EventviewComponent implements OnInit {
         this.currentUser = user;
     });
 
-    if (!this.currentUser || !this.currentUser.status)
+    if (!this.currentUser)
     {
       this.router.navigate(['/main']);
     }
@@ -51,7 +51,7 @@ export class EventviewComponent implements OnInit {
   openEditor(value){
     this.populateForm(value, this.event);
 
-    if (this.currentUser.status == EmployeeRoles.BACManager)
+    if (this.currentUser.status == EmployeeRoles.BACManager || !this.currentUser.status)
       this.dialog.open(EventeditComponent, {data:{ Event: this.event }});
   }
 
