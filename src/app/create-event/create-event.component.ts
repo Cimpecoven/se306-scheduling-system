@@ -24,7 +24,7 @@ export class CreateEventComponent implements OnInit {
       description: new FormControl(''),
       room: new FormControl('', [Validators.required]),
       catering: new FormControl('', [Validators.required]),
-      menu: new FormControl(''),
+      menuItem: new FormControl(''),
     });
   }
 
