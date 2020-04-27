@@ -40,7 +40,7 @@ export class UserPortalComponent implements OnInit {
     this.currentUser.email = value.email ? value.email : this.currentUser.email;
     this.currentUser.name = value.name ? value.name : this.currentUser.name;
 
-    if (value.password && value.password == this.currentUser.password) {
+    if (value.password && value.password == this.confirmFormControl.value) {
       this.currentUser.password = value.password;
       this.passwordWarning = false;
     }
