@@ -50,7 +50,7 @@ export class EventviewComponent implements OnInit {
   openEditor(value){
     this.populateForm(value, this.event);
 
-    if (this.currentUser.status == EmployeeRoles.BACManager || !this.currentUser.status)
+    if (this.currentUser.status == EmployeeRoles.BACManager)
       this.dialog.open(EventeditComponent, {data:{ Event: this.event }});
   }
 
