@@ -109,11 +109,12 @@ export class EventeditComponent implements OnInit {
                                            this.data.Event.catering,
                                            this.data.Event.menuItem,
                                            this.data.Event.description));
+    this.dialogRef.close();
   }
   deleteEvent()
   {
-    console.log();
     this.service.deleteEvent(this.data.Event.databaseKey);
+    this.dialogRef.close();
   }
 
 }
