@@ -59,4 +59,8 @@ export class EquipmentviewComponent implements OnInit {
   openDialog() {
     this.dialog.open(CreateEquipmentComponent);
   }
+
+  deleteItem(value) {
+    this.service.deleteEquipmentItem(value);
+  }
 }

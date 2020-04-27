@@ -15,7 +15,7 @@
                     <td (click)="openEditor(item.payload.doc.data())" style="padding-right: 100px;">{{ item.payload.doc.data().location }}</td>
                     <td (click)="openEditor(item.payload.doc.data())" style="padding-right: 100px;">{{ item.payload.doc.data().condition }}</td>
                     <!-- <td style="padding-right: 0px;">{{ item.payload.doc.data().databaseKey }}</td> -->
-                    <td (click)="deleteItem(item.payload.doc.data().databaseKey)"><fa-icon [icon]="faTrashAlt"></fa-icon></td>
+                    <td (click)="deleteItem(item.payload.doc.data())"><fa-icon [icon]="faTrashAlt"></fa-icon></td>
                         <!-- <span *ngFor = "let e of item.payload.doc.data().event">
                         {{ e }}
                     </span> -->

@@ -60,4 +60,8 @@ export class FoodviewComponent implements OnInit {
   openDialog() {
     this.dialog.open(CreateFoodItemComponent);
   }
+
+  deleteItem(value) {
+    this.service.deleteFoodItem(value);
+  }
 }
