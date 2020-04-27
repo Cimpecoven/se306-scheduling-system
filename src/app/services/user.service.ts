@@ -26,35 +26,37 @@ export class UserService {
   }
 
   createCustomerAccount(account: CustomerAccount): void {
+    let exists = false;
+
     this.customersRef.get().subscribe(
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
-          if (compare.userID == account.userID || compare.password == account.password)
-            throw "Account credentials already exist: failed creation.";
+          if (compare.email === account.email && compare.password === account.password) {
+            exists = true;
+          }
         });
-      },
-      error => {
-        console.log('Error: ', error);
-        return;
+
+        if (!exists) {
+          this.customersRef.add({
+            email: account.email,
+            password: account.password,
+            name: "",
+            userID: account.userID,
+            databaseKey: "",
+          }).then(value => {
+            account.databaseKey = value.id;
+            this.customersRef.doc(value.id).update({...account});
+            this.getCustomerAccount(account.email, account.password);
+          });
+        }
       });
+  }
 
-    //  this.customersRef.add({...account}).then(value => {
-    //     account.databaseKey = value.id;
-    //     this.customersRef.doc(value.id).update({...account});
-    //   });
+  findExistingAccount(account: CustomerAccount) {
+    let exists = false;
 
-    this.customersRef.add({
-      email: account.email,
-      password: account.password,
-      name: "",
-      userID: account.userID,
-      databaseKey: "",
-    }).then(value => {
-      account.databaseKey = value.id;
-      this.customersRef.doc(value.id).update({...account});
-      this.getCustomerAccount(account.email, account.password);
-    });
+      return exists;
   }
 
   updateCustomerAccount(account: CustomerAccount): Promise<void> {
@@ -72,7 +74,7 @@ export class UserService {
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
-          if (compare.email == email && compare.password == password) {
+          if (compare.email === email && compare.password === password) {
             this.currentUser.next(compare as CustomerAccount);
             return "";
           }
