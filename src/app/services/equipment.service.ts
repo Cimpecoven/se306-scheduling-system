@@ -28,7 +28,7 @@ export class EquipmentService {
   }
 
   updateEquipmentItem(equipment: Equipment): Promise<void> {
-    return this.equipmentRef.doc(equipment.databaseKey).update(equipment);
+    return this.equipmentRef.doc(equipment.databaseKey).update({...equipment});
   }
 
   deleteEquipmentItem(equipment: Equipment) {

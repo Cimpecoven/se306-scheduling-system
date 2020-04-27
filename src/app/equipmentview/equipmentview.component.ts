@@ -43,7 +43,7 @@ export class EquipmentviewComponent implements OnInit {
     item.quantity = data.quantity;
     item.name = data.name;
     item.location = data.location;
-    item.condition = item.condition;    
+    item.condition = data.condition;    
   }
 
   openEditor(value){

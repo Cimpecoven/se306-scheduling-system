@@ -30,7 +30,7 @@ export class EquipmenteditComponent implements OnInit {
   populateForm(data, item){
     item.name = data.name;
     item.location = data.location;
-    item.condition = data.condtion;
+    item.condition = data.condition;
     item.quantity = data.quantity;
   }
 
