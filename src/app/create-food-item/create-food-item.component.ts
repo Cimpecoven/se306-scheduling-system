@@ -24,7 +24,8 @@ export class CreateFoodItemComponent implements OnInit {
     });
   }
 
-  tryRegister(value){
+  tryRegister(value) {
+    value.expirationDate = this.datepipe.transform(value.expirationDate, 'MM/dd/yyyy') as string;
     this.service.createFoodItem(value);
     this.dialogRef.close();
   }
