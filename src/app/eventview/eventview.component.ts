@@ -44,8 +44,7 @@ export class EventviewComponent implements OnInit {
     event.room = data.room;
     event.catering = data.catering;
     event.menuItem = data.menuItem;
-    event.description = data.description;
-    
+    event.description = data.description;   
   }
 
   openEditor(value){
