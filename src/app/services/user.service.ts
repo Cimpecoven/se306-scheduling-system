@@ -32,7 +32,7 @@ export class UserService {
       querySnapshot => {
         querySnapshot.docs.forEach((doc) => {
           let compare = doc.data();
-          if (compare.email === account.email && compare.password === account.password) {
+          if (compare.email === account.email) {
             exists = true;
           }
         });
